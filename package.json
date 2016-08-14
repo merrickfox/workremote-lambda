@@ -1,0 +1,23 @@
+{
+  "name": "workremote-lambda",
+  "version": "1.0.0",
+  "description": "backend for workremote.io",
+  "main": "handler.js",
+  "dependencies": {
+    "aws-sdk": "^2.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/merrickfox/workremote-lambda.git"
+  },
+  "author": "Merrick Fox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/merrickfox/workremote-lambda/issues"
+  },
+  "homepage": "https://github.com/merrickfox/workremote-lambda#readme"
+}
