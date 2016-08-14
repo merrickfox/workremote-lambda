@@ -1,26 +1,53 @@
 'use strict';
 var AWS = require('aws-sdk');
-// Your first function handler
+
 module.exports.jobs = (event, context, cb) => {
   var dynamodb = new AWS.DynamoDB();
-  var params = {
-    "Item": {
-      "job_id": {"S": "random"},
-      "job_title": {"S": event.body.job_title},
-      "job_description": {"S": event.body.description}
+  var tableName = 'work_remote_jobs';
 
-    },
-    "TableName": 'work_remote_jobs'
-  };
+  switch (event.method) {
+    case "POST":
+      var params = {
+        "Item": {
+          "job_id": {"S": "random"},
+          "job_title": {"S": event.body.job_title},
+          "job_description": {"S": event.body.description}
 
-  dynamodb.putItem(params, function(err, data) {
-    cb(null, {
-      context: context,
-      event: event,
-      error: err,
-      data: data
-    });
-  });
+        },
+        "TableName": tableName
+      };
+
+      dynamodb.putItem(params, function(err, data) {
+        cb(null, {
+          error: err,
+          data: data
+        });
+      });
+      break;
+
+    case "GET":
+      // var params = {
+      //   "Item": {
+      //     "job_id": {"S": "random"},
+      //     "job_title": {"S": event.body.job_title},
+      //     "job_description": {"S": event.body.description}
+
+      //   },
+      //   "TableName": 'work_remote_jobs'
+      // };
+
+      // dynamodb.putItem(params, function(err, data) {
+      //   cb(null, {
+      //     context: context,
+      //     event: event,
+      //     error: err,
+      //     data: data
+      //   });
+      // });
+      cb(null, {
+          context: context,
+          event: event
+        });
+      break;
+  }
 }
-
-// You can add more handlers here, and reference them in serverless.yml
