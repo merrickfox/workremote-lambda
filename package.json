@@ -4,7 +4,8 @@
   "description": "backend for workremote.io",
   "main": "handler.js",
   "dependencies": {
-    "aws-sdk": "^2.5.0"
+    "aws-sdk": "^2.5.0",
+    "node-uuid": "^1.4.7"
   },
   "devDependencies": {},
   "scripts": {

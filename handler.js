@@ -1,5 +1,6 @@
 'use strict';
 var AWS = require('aws-sdk');
+var uuid = require('node-uuid');
 
 module.exports.jobs = (event, context, cb) => {
   var dynamodb = new AWS.DynamoDB();
@@ -9,7 +10,7 @@ module.exports.jobs = (event, context, cb) => {
     case "POST":
       var params = {
         "Item": {
-          "job_id": {"S": "random"},
+          "job_id": {"S": uuid.v1()},
           "job_title": {"S": event.body.job_title},
           "job_description": {"S": event.body.description}
 
