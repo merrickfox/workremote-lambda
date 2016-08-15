@@ -27,28 +27,22 @@ module.exports.jobs = (event, context, cb) => {
       break;
 
     case "GET":
-      // var params = {
-      //   "Item": {
-      //     "job_id": {"S": "random"},
-      //     "job_title": {"S": event.body.job_title},
-      //     "job_description": {"S": event.body.description}
+      var params = {
+        "TableName": tableName
+      };
 
-      //   },
-      //   "TableName": 'work_remote_jobs'
-      // };
+      if (event.path.jobId) {
 
-      // dynamodb.putItem(params, function(err, data) {
-      //   cb(null, {
-      //     context: context,
-      //     event: event,
-      //     error: err,
-      //     data: data
-      //   });
-      // });
-      cb(null, {
-          context: context,
-          event: event
+      } else {
+        dynamodb.scan(params, function (err, data) {
+          cb(null, {
+            err: err,
+            data, data
+          });
         });
+      }
+
+
       break;
   }
 }
