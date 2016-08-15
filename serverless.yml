@@ -48,7 +48,7 @@ functions:
           path: jobs
           method: post
       - http:
-          path: jobs
+          path: jobs/{jobId}
           method: get
 
 #   you can add any of the following events
