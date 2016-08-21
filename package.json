@@ -5,7 +5,9 @@
   "main": "handler.js",
   "dependencies": {
     "aws-sdk": "^2.5.0",
-    "node-uuid": "^1.4.7"
+    "joi": "^9.0.4",
+    "node-uuid": "^1.4.7",
+    "vogels": "^2.2.0"
   },
   "devDependencies": {},
   "scripts": {

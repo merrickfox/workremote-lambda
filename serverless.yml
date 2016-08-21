@@ -53,6 +53,9 @@ functions:
       - http:
           path: jobs/{jobId}
           method: get
+      - http:
+          path: jobs/{jobId}
+          method: delete
 
 #   you can add any of the following events
 #   events:
