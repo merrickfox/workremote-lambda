@@ -20,13 +20,25 @@ module.exports.jobs = (event, context, cb) => {
       Job.create({
         job_description : event.body.description,
         job_title : event.body.job_title,
-      }, function (err, tweet) {
+        hq_location : event.body.hq_location,
+        salary: event.body.salary,
+        salary_range_high: event.body.salary_range_high,
+        salary_range_low: event.body.salary_range_low,
+        currency_code: event.body.currency_code,
+        website_url: event.body.website_url,
+        email: event.body.email,
+        full_time: event.body.full_time,
+        required_online_from: event.body.required_online_from,
+        required_online_to: event.body.required_online_to,
+        timezone: event.body.timezone,
+      }, function (err, job) {
         if (err)  {
           return context.fail(err);
         }
 
-        return context.succeed(event;
+        return context.succeed(job.get())
       });
+
       break;
   }
 
