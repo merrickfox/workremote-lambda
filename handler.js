@@ -51,6 +51,17 @@ module.exports.jobs = (event, context, cb) => {
       });
 
       break;
+
+    case "DELETE":
+      Job.destroy(event.path.jobId, function (err, job) {
+        if (err)  {
+          return context.fail(err);
+        }
+
+        return context.succeed({})
+      });
+
+      break;
   }
 
   // switch (event.method) {
