@@ -14,7 +14,6 @@ module.exports.jobs = (event, context, cb) => {
   var tableName = 'work_remote_jobs';
 
   console.log('Received event:', JSON.stringify(event, null, 2));
-
   switch (event.method) {
     case "POST":
       Job.create({
@@ -32,6 +31,18 @@ module.exports.jobs = (event, context, cb) => {
         required_online_to: event.body.required_online_to,
         timezone: event.body.timezone,
       }, function (err, job) {
+        if (err)  {
+          return context.fail(err);
+        }
+
+        return context.succeed(job.get())
+      });
+
+      break;
+
+    case "PUT":
+      /* TODO: disregard parts of payload that aren't part of schema */
+      Job.update(event.body, function (err, job) {
         if (err)  {
           return context.fail(err);
         }

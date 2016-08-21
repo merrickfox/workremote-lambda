@@ -49,6 +49,9 @@ functions:
           method: post
       - http:
           path: jobs
+          method: put
+      - http:
+          path: jobs
           method: get
       - http:
           path: jobs/{jobId}
